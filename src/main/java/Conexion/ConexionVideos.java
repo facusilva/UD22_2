@@ -31,7 +31,7 @@ public class ConexionVideos {
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("No se ha podido conectar con mi base de datos");
 			ex.printStackTrace();
-			System.out.println(ex);
+			JOptionPane.showMessageDialog(null,"Hubo un error al conectar con el servidor");
 		}
 	}
 
@@ -58,7 +58,9 @@ public class ConexionVideos {
 			st.executeUpdate(Query2);
 			System.out.println(" Server connected ");
 		} catch (SQLException ex) {
-			System.out.println("No se ha podido conectar con la base de datos o ya existe");
+			
+			System.out.println(ex);
+			System.out.println("No se ha podido conectar crear la BBDD o ya existe");
 		}
 
 	}
@@ -90,10 +92,13 @@ public class ConexionVideos {
 		} catch (Exception ex) {
 
 			System.out.println(ex);
+			System.out.println("No se ha podido crear la tabla o ya existe");
 
 		}
 
 	}
+	
+	//Método para hacer DELETE y poder borrar una fila de la tabla cliente dependiendo de la id que le pasamos.
 	
 	public void borrarTabla(int id) {
         try {
@@ -105,9 +110,12 @@ public class ConexionVideos {
             stdb.executeUpdate(Querydb);
             stdb.executeUpdate(Query);
         } catch (Exception ex) {
-            System.out.println(ex);
+        	System.out.println(ex);
         }
     }
+	
+	//Método para hacer INSERTS en la tabla videos.
+	
 	public void crearUsuario(String titulo, String director, int cli_id) {
 		try {
             String Querydb = "USE clientes";
@@ -121,6 +129,8 @@ public class ConexionVideos {
 			System.out.println(ex);
 		}
 	}
+	
+	//Método para hacer UPDATE de una fila de la tabla videos.
 	
 	public void editarUsuario(int id, String titulo, String director, int cli_id) {
         try {
@@ -136,6 +146,8 @@ public class ConexionVideos {
         }
     }
 
+	//Método para rellenar los campos con los valores de una fila en la tabla videos.
+	
 	public String leerUsuario(int id) {
 		String datos="";
 		try {

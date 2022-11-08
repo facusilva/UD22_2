@@ -11,7 +11,8 @@ public class ModeloVideos {
 	private String director;
 	private int cli_id;
 
-	
+	// Constructores
+
 	public ModeloVideos() {
 		this.conexionVideos =  new ConexionVideos();
 	}
@@ -37,28 +38,39 @@ public class ModeloVideos {
 		this.cli_id = cli_id;
 	}
 
+	// Método para crear una nueva fila en la tabla.
 
+		
 	public void createUser() {
 		conexionVideos.establecerCon();
 		conexionVideos.crearUsuario(titulo, director, cli_id);
 	}
+	
+	// Método para borrar una fila en la tabla.
 	
 	public void borrarUsuario() {
 		conexionVideos.establecerCon();
 		conexionVideos.borrarTabla(id);
 	}
 	
+	// Método para editar una fila en la tabla.
+	
 	public void editarUsuario(){
 		conexionVideos.establecerCon();
 		conexionVideos.editarUsuario(id,titulo, director, cli_id);
 	}
 	
+	// Método para leer los datos de fila en la tabla y retornar los datos al
+	// controlador.
+	
 	public String readUsuario() {
 		conexionVideos.establecerCon();
-		String datos = conexionVideos.leerUsuario(id);
+		String datos ="";
+		datos = conexionVideos.leerUsuario(id);
 		return datos;
 	}
 	
+	// Getters y Setters.
 	
 	public int getId() {
 		return id;
